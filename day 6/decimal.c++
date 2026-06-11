@@ -1,29 +1,21 @@
-// Convert Decimal to Binary
-
+// Convert Binary to Decimal
 #include <iostream>
 using namespace std;
 
 int main() {
-    int num;
-    cin >> num;
+    long long binary;
+    cin >> binary;
 
-    int binary[32];
-    int i = 0;
+    int decimal = 0, base = 1;
 
-    if (num == 0) {
-        cout << 0;
-        return 0;
+    while (binary > 0) {
+        int lastDigit = binary % 10;
+        decimal += lastDigit * base;
+        base *= 2;
+        binary /= 10;
     }
 
-    while (num > 0) {
-        binary[i] = num % 2;
-        num /= 2;
-        i++;
-    }
-
-    for (int j = i - 1; j >= 0; j--) {
-        cout << binary[j];
-    }
+    cout << decimal;
 
     return 0;
 }
